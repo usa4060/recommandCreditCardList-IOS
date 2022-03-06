@@ -1,16 +1,10 @@
-//
-//  CradListCell.swift
-//  RecommandCreditCardList
-//
-//  Created by admin on 2022/03/06.
-//
 
 import UIKit
 
-class CradListCell: UITableViewCell {
+class CardListCell: UITableViewCell {
 
+    @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var cardImageView: UIImageView!
-    @IBOutlet weak var randLabel: UILabel!
     @IBOutlet weak var promotionLabel: UILabel!
     @IBOutlet weak var cardNameLabel: UILabel!
     override func awakeFromNib() {

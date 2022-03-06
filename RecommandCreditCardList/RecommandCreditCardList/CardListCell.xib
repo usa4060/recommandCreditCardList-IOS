@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="CradListCell" customModule="RecommandCreditCardList" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="CardListCell">
             <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -82,7 +82,7 @@
                 <outlet property="cardImageView" destination="smi-Xm-y4D" id="sUF-FH-mzo"/>
                 <outlet property="cardNameLabel" destination="GDb-2y-GnQ" id="9db-7b-0l9"/>
                 <outlet property="promotionLabel" destination="NxI-GZ-wXR" id="eLf-ql-xww"/>
-                <outlet property="randLabel" destination="nEW-bI-XXK" id="ve7-Ct-k22"/>
+                <outlet property="rankLabel" destination="nEW-bI-XXK" id="Xj9-Ws-SlV"/>
             </connections>
             <point key="canvasLocation" x="133" y="133"/>
         </tableViewCell>

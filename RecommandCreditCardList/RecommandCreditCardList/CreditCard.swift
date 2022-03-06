@@ -5,7 +5,7 @@ struct CreditCard : Codable{
     let id : Int
     let rank : Int
     let name : String
-    let promotionDetail : [PromotionDetail]
+    let promotionDetail : PromotionDetail
     let isSelected : Bool?
 }
 
