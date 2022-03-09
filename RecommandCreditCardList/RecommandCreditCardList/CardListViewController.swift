@@ -70,5 +70,20 @@ class CardListViewController : UITableViewController {
         
         detailViewController.promotionDetail = creditCardList[indexPath.row].promotionDetail
         self.show(detailViewController, sender: nil)
+        
+        // option1
+        let cardID = creditCardList[indexPath.row].id
+        ref.child("Item\(cardID)/isSelected").setValue(true)
+        
+        // option2
+        // 특정 key의 값이 cardID값과 같은 객체를 찾아서 snapshot으로 찍어서 해당 값을 '쓰기' 하는 방식
+        // 처음에는 id의 값이 특정되어 있지 않아서, 해당 객체를 직접 찾을 수는 없지만 객체 내부의 값을 검색하여 찾는 방식이다.
+        ref.queryOrdered(byChild: "id").queryEqual(toValue: cardID).observe(.value){ [weak self]snapshot in
+            guard let self = self,
+                  let value = snapshot.value as? [String : [String : Any]],
+                  let key = value.keys.first else {return}
+            
+            self.ref.child("\(key)/isSelected").setValue(true)
+        }
     }
 }
