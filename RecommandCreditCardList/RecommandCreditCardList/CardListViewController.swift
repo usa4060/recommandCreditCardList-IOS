@@ -78,12 +78,41 @@ class CardListViewController : UITableViewController {
         // option2
         // 특정 key의 값이 cardID값과 같은 객체를 찾아서 snapshot으로 찍어서 해당 값을 '쓰기' 하는 방식
         // 처음에는 id의 값이 특정되어 있지 않아서, 해당 객체를 직접 찾을 수는 없지만 객체 내부의 값을 검색하여 찾는 방식이다.
-        ref.queryOrdered(byChild: "id").queryEqual(toValue: cardID).observe(.value){ [weak self]snapshot in
-            guard let self = self,
-                  let value = snapshot.value as? [String : [String : Any]],
-                  let key = value.keys.first else {return}
+        
+//
+//        ref.queryOrdered(byChild: "id").queryEqual(toValue: cardID).observe(.value){ [weak self]snapshot in
+//            guard let self = self,
+//                  let value = snapshot.value as? [String : [String : Any]],
+//                  let key = value.keys.first else {return}
+//
+//            self.ref.child("\(key)/isSelected").setValue(true)
+//        }
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            // option 1
+            let cardID = creditCardList[indexPath.row].id
+            // 해당 경로에 있는 데이터 전체가 삭제된다.
+            ref.child("Item\(cardID)").removeValue()
             
-            self.ref.child("\(key)/isSelected").setValue(true)
+            // option 2
+            // 특정 key의 값이 cardID값과 같은 객체를 찾아서 snapshot으로 찍어서 해당 값을 '삭제' 하는 방식
+            // 처음에는 id의 값이 특정되어 있지 않아서, 해당 객체를 직접 찾을 수는 없지만 객체 내부의 값을 검색하여 찾는 방식이다.
+//            ref.queryOrdered(byChild: "id").queryEqual(toValue: cardID).observe(.value){ [weak self] snapshot in
+//                guard let self = self,
+//                      let value = snapshot.value as? [String : [String : Any]],
+//                      // snapshot의 value는 array의 값으로 전달이 된다.
+//                      // 하지만, 우리가 사용하는 "id"의 값은 모든 객체에서 고유하기 때문에 array의 첫번째 index에 접근하기 위해 value.keys.first를 사용한다.
+//                      let key = value.keys.first else {return}
+//
+//                self.ref.child(key).removeValue()
+//            }
         }
     }
 }
+
