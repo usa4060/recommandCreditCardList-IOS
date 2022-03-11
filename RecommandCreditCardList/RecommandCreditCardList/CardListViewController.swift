@@ -47,7 +47,7 @@ class CardListViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CardListCell", for: indexPath) as? CardListCell else {return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CardListCell", for: indexPath) as? CardListCell else {return UITableViewCell()} // 여기서 그냥 return nil로 적으면 cell반환이 없어서 오류 뜸 (이걸로 고생함,,,,)
         
         cell.rankLabel.text = "\(creditCardList[indexPath.row].rank)"
         cell.promotionLabel.text = "\(creditCardList[indexPath.row].promotionDetail.amount)만원 증정"
@@ -89,11 +89,14 @@ class CardListViewController : UITableViewController {
 //        }
     }
     
+    // cell을 가로로 슬라이드 했을 때, editing설정을 부여하는 함수
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
+
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        // 슬라이드를 하면 delete기능을 추가해 줌
         if editingStyle == .delete{
             // option 1
             let cardID = creditCardList[indexPath.row].id
