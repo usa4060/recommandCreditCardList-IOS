@@ -55,3 +55,14 @@
 ## 개발 중 유의 사항
 ### 1. Lottie란?
 - 에어비엔비에서 만든 오픈소스로, ImageView에 gif파일 즉 움짤을 사용할 수 있게 해줌.
+### 2. Unknown class XXX in Interface Builder file" Exception
+- 개발 도중, ```Unknown class XXX in Interface Builder file" Exception``` 에러가 발생함
+- 실제 에러 명칭은 ```NSUnknownKeyException``` 인데, 이러한 에러가 발생하는 이유는 storyboard의 Outlet참조 문제이거나, Class의 타켓 모듈 설정 오류로 인해 발생한다.
+- 나는 ```CardListCell.xib```을 직접 생성하면서, Module을 None으로 지정하여 이러한 에러가 발행하였다.
+- None -> 프로젝트명 으로 수정을 하니 오류가 해결 되었다.
+### 3. Xib, Nib파일이란??
+- Nib 파일과 Xib파일은 쉽게 말해서, UI필드를 저장하기 위한 파일이다.
+- ```UITableViewController```, ```UITalbeViewCell```, ```UICollectionCell```클래스, ```CustomView```에서만 지원을 합니다
+- Nib파일과 Xib파일의 차이는 binary file VS xml 의 차이이다.
+    - 하지만, Nib파일을 컴파일 하게 되면 결국 xml이 되므로 같은 의미라고 봐도 괜찮다.
+    
