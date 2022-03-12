@@ -14,6 +14,7 @@ class CardDetailViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // lottie 라이브러리를 활용한 움짤 효과 -> AnimationView를 종속
         let animationView = AnimationView(name: "money")
         lottieView.contentMode = .scaleAspectFit
         lottieView.addSubview(animationView)
