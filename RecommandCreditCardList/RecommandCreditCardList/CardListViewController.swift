@@ -79,14 +79,15 @@ class CardListViewController : UITableViewController {
         // 특정 key의 값이 cardID값과 같은 객체를 찾아서 snapshot으로 찍어서 해당 값을 '쓰기' 하는 방식
         // 처음에는 id의 값이 특정되어 있지 않아서, 해당 객체를 직접 찾을 수는 없지만 객체 내부의 값을 검색하여 찾는 방식이다.
         
-//
-//        ref.queryOrdered(byChild: "id").queryEqual(toValue: cardID).observe(.value){ [weak self]snapshot in
-//            guard let self = self,
-//                  let value = snapshot.value as? [String : [String : Any]],
-//                  let key = value.keys.first else {return}
-//
-//            self.ref.child("\(key)/isSelected").setValue(true)
-//        }
+        //
+        ref.queryOrdered(byChild: "id").queryEqual(toValue: cardID).observe(.value){ [weak self]snapshot in
+            guard let self = self,
+                  let value = snapshot.value as? [String : [String : Any]],
+                  let key = value.keys.first else {return}
+
+            self.ref.child("\(key)/isSelected").setValue(true)
+        }
+        //
     }
     
     // cell을 가로로 슬라이드 했을 때, editing설정을 부여하는 함수
@@ -106,15 +107,17 @@ class CardListViewController : UITableViewController {
             // option 2
             // 특정 key의 값이 cardID값과 같은 객체를 찾아서 snapshot으로 찍어서 해당 값을 '삭제' 하는 방식
             // 처음에는 id의 값이 특정되어 있지 않아서, 해당 객체를 직접 찾을 수는 없지만 객체 내부의 값을 검색하여 찾는 방식이다.
-//            ref.queryOrdered(byChild: "id").queryEqual(toValue: cardID).observe(.value){ [weak self] snapshot in
-//                guard let self = self,
-//                      let value = snapshot.value as? [String : [String : Any]],
-//                      // snapshot의 value는 array의 값으로 전달이 된다.
-//                      // 하지만, 우리가 사용하는 "id"의 값은 모든 객체에서 고유하기 때문에 array의 첫번째 index에 접근하기 위해 value.keys.first를 사용한다.
-//                      let key = value.keys.first else {return}
-//
-//                self.ref.child(key).removeValue()
-//            }
+            //
+            ref.queryOrdered(byChild: "id").queryEqual(toValue: cardID).observe(.value){ [weak self] snapshot in
+                guard let self = self,
+                      let value = snapshot.value as? [String : [String : Any]],
+                      // snapshot의 value는 array의 값으로 전달이 된다.
+                      // 하지만, 우리가 사용하는 "id"의 값은 모든 객체에서 고유하기 때문에 array의 첫번째 index에 접근하기 위해 value.keys.first를 사용한다.
+                      let key = value.keys.first else {return}
+
+                self.ref.child(key).removeValue()
+            }
+            //
         }
     }
 }
