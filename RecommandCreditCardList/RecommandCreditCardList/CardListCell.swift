@@ -9,13 +9,11 @@ class CardListCell: UITableViewCell {
     @IBOutlet weak var cardNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     // cell선택 시 action설정
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     
 }
