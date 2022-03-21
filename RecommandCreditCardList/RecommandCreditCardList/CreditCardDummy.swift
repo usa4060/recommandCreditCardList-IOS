@@ -1,9 +1,3 @@
-//
-//  CreditCardDummy.swift
-//  CreditCardList
-//
-//  Created by Bo-Young PARK on 2021/07/13.
-//
 
 import Foundation
 

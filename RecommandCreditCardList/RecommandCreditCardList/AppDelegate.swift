@@ -1,9 +1,3 @@
-//
-//  AppDelegate.swift
-//  RecommandCreditCardList
-//
-//  Created by admin on 2022/03/06.
-//
 
 import UIKit
 import Firebase
