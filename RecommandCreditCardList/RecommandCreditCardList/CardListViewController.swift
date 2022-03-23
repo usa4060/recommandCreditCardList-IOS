@@ -6,6 +6,7 @@ class CardListViewController : UITableViewController {
     
     var creditCardList : [CreditCard] = []
     
+    // view가 처음 생성되었읋 때 실행 (ViewWillAppeared아님)
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,6 +38,7 @@ class CardListViewController : UITableViewController {
                 }
             }
             catch let error{
+                // error문 출력
                 print("ERROR JSON parsing \(error.localizedDescription)")
             }
         }
@@ -46,6 +48,7 @@ class CardListViewController : UITableViewController {
         return creditCardList.count
     }
     
+    // row에 해당하는 cell에 대한 내용 지정
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CardListCell", for: indexPath) as? CardListCell else {return UITableViewCell()} // 여기서 그냥 return nil로 적으면 cell반환이 없어서 오류 뜸 (이걸로 고생함,,,,)
         

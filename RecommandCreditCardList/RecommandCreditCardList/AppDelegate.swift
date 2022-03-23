@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         let db = Firestore.firestore()
-        
+
         // 처음 실행할 때, document가 존재하는지 확인하기 위해 .getDocuments를 이용해서 snapshot을 가져온다.
         db.collection("creditCardList").getDocuments { snapshot, _ in
             guard snapshot?.isEmpty == true else {return}
