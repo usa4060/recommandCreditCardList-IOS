@@ -22,7 +22,7 @@ class CardDetailViewController : UIViewController {
         animationView.loopMode = .loop
         animationView.play()
     }
-    
+        // viewWillAppear에 작성하는 이유는, 최초 view가 생성되었을 때 뿐만 아니라, view가 뒤로가기 등과 같이 다시 재생산 했을 경우에도 결과를 보여주기 위함
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
